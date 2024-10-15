@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "prisma": "cd src/prisma && npx prisma generate",
     "start": "node ./dist/index.js",
-    "build": "tsc",
+    "build": "npm run prisma && tsc",
     "dev": "nodemon ./src/index.ts"
   },
   "keywords": [],
