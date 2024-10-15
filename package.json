@@ -1,11 +1,11 @@
 {
-  "name": "kopki-ecommerce-shop",
+  "name": "seamly",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node /opt/render/project/src/dist/index.js",
     "build": "tsc",
     "dev": "nodemon /opt/render/project/src/dist/index.ts"
   },
