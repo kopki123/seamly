@@ -46,7 +46,7 @@ app.use('/api/v1/categories', categoryRoute);
 app.use('/api/v1/cart', cartRoutes);
 app.use('/api/v1/orders', orderRoutes);
 app.use('/api/v1/uploads', imageRoutes);
-
+console.log('!!!!!!');
 // Middlewares
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

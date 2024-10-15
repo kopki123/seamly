@@ -6,7 +6,6 @@ import { CustomAPIError } from '../errors';
 import apiResponse from '../utils/apiResponse';
 
 const errorHandlerMiddleware = (err: CustomAPIError, req: Request, res: Response, next: NextFunction) => {
-  // console.log(err);
   const statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
   const message = err.message || '發生錯誤，稍後重試';
 
