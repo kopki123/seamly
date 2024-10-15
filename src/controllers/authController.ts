@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import { BadRequestError, UnauthenticatedError } from '../errors';
-import * as authService from '../services/authService';
-import { createRefreshToken, deleteRefreshToken } from '../services/refreshTokenService';
-import sendVerificationEmail from '../utils/sendVerificationEmail';
-import comparePassword from '../utils/comparePassword';
-import { attachCookiesToResponse, generateAccessToken } from '../utils/authJwt';
-import createTokenUser from '../utils/createTokenUser';
-import apiResponse from '../utils/apiResponse';
+import { BadRequestError, UnauthenticatedError } from '../errors/index.js';
+import * as authService from '../services/authService.js';
+import { createRefreshToken, deleteRefreshToken } from '../services/refreshTokenService.js';
+import sendVerificationEmail from '../utils/sendVerificationEmail.js';
+import comparePassword from '../utils/comparePassword.js';
+import { attachCookiesToResponse, generateAccessToken } from '../utils/authJwt.js';
+import createTokenUser from '../utils/createTokenUser.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const register = async (req: Request, res: Response) => {
   const {

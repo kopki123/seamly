@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import history from 'connect-history-api-fallback';
-import errorHandlerMiddleware from './middleware/errorHandler.js';
+// import errorHandlerMiddleware from './middleware/errorHandler.js';
 import notFoundMiddleware from './middleware/notFound.js';
 
 import authRouter from './routes/authRoutes.js';
@@ -46,10 +46,10 @@ app.use('/api/v1/categories', categoryRoute);
 app.use('/api/v1/cart', cartRoutes);
 app.use('/api/v1/orders', orderRoutes);
 app.use('/api/v1/uploads', imageRoutes);
-console.log('!!!!!!');
+
 // Middlewares
 app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 const start = async () => {

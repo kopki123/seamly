@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import { UnauthorizedError } from '../errors';
-import * as cartService from '../services/cartService';
-import apiResponse from '../utils/apiResponse';
+import { UnauthorizedError } from '../errors/index.js';
+import * as cartService from '../services/cartService.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const getCart = async (req: Request, res: Response) => {
   const userId = req.user.userId;

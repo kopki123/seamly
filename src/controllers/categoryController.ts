@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import * as categoryService from '../services/categoryService';
-import apiResponse from '../utils/apiResponse';
+import * as categoryService from '../services/categoryService.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const getAllCategories = async (req: Request, res: Response) => {
   const categories = await categoryService.getAllCategories();

@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import { createClient } from '@supabase/supabase-js';
-import { BadRequestError } from '../errors';
 import { decode } from 'base64-arraybuffer';
-import apiResponse from '../utils/apiResponse';
+import { BadRequestError } from '../errors/index.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const bucket = 'main-bucket';
 

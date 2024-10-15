@@ -1,12 +1,12 @@
 import express from 'express';
-import { authenticateUser } from '../middleware/authentication';
+import { authenticateUser } from '../middleware/authentication.js';
 import {
   register,
   verifyEmail,
   login,
   logout,
   checkLoginStatus
-} from '../controllers/authController';
+} from '../controllers/authController.js';
 
 const router = express.Router();
 

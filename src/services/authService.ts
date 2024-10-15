@@ -1,5 +1,5 @@
-import prisma from '../prisma/prisma-client';
-import { BadRequestError, NotFoundError } from '../errors';
+import prisma from '../prisma/prisma-client.js';
+import { BadRequestError, NotFoundError } from '../errors/index.js';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import Joi from 'joi';

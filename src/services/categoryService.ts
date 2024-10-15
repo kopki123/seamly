@@ -1,5 +1,5 @@
-import prisma from '../prisma/prisma-client';
-import { BadRequestError } from '../errors';
+import prisma from '../prisma/prisma-client.js';
+import { BadRequestError } from '../errors/index.js';
 import Joi from 'joi';
 
 const categorySchema = Joi.object({

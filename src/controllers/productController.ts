@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import * as productService from '../services/productService';
-import apiResponse from '../utils/apiResponse';
+import * as productService from '../services/productService.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const getAllProducts = async (req: Request, res: Response) => {
   const products = await productService.getAllProducts();

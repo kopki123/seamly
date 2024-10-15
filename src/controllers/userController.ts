@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import * as userService from '../services/userService';
-import checkPermissions from '../utils/checkPermissions';
-import apiResponse from '../utils/apiResponse';
+import * as userService from '../services/userService.js';
+import checkPermissions from '../utils/checkPermissions.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const getUserInfo = async (req: Request, res: Response) => {
   const userId = req.user.userId;

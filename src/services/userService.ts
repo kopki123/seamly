@@ -1,5 +1,5 @@
-import prisma from '../prisma/prisma-client';
-import { NotFoundError } from '../errors';
+import prisma from '../prisma/prisma-client.js';
+import { NotFoundError } from '../errors/index.js';
 
 const findUserById = async (userId: string) => {
   const user = await prisma.user.findUnique({

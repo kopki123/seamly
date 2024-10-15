@@ -1,7 +1,7 @@
-import prisma from '../prisma/prisma-client';
-import { BadRequestError, NotFoundError } from '../errors';
+import prisma from '../prisma/prisma-client.js';
+import { BadRequestError, NotFoundError } from '../errors/index.js';
 import Joi from 'joi';
-import { Product } from '../models/ProductModel';
+import { Product } from '../models/ProductModel.js';
 
 const productSchema = Joi.object({
   title: Joi.string().trim().max(100).required(),

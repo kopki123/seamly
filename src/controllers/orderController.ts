@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import * as orderService from '../services/orderService';
-import apiResponse from '../utils/apiResponse';
+import * as orderService from '../services/orderService.js';
+import apiResponse from '../utils/apiResponse.js';
 
 const getUserOrders = async (req: Request, res: Response) => {
   const userId = req.user.userId;

@@ -1,7 +1,7 @@
-import prisma from '../prisma/prisma-client';
+import prisma from '../prisma/prisma-client.js';
 import Joi from 'joi';
-import { OrderInput } from '../models/OrderInputModel';
-import { BadRequestError } from '../errors';
+import { OrderInput } from '../models/OrderInputModel.js';
+import { BadRequestError } from '../errors/index.js';
 
 const orderSchema = Joi.object({
   userId: Joi.string().required(),

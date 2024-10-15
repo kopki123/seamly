@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { UnauthenticatedError, UnauthorizedError } from '../errors';
-import { isTokenValid, attachCookiesToResponse, generateAccessToken} from '../utils/authJwt';
-import { findRefreshToken } from '../services/refreshTokenService';
-import { Role } from '../utils/role';
+import { UnauthenticatedError, UnauthorizedError } from '../errors/index.js';
+import { isTokenValid, attachCookiesToResponse, generateAccessToken} from '../utils/authJwt.js';
+import { findRefreshToken } from '../services/refreshTokenService.js';
+import { Role } from '../utils/role.js';
 
 interface JwtPayload {
   user: {

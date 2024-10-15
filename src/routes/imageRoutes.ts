@@ -1,11 +1,11 @@
 import express from 'express';
-import { authenticateUser, authorizePermissions } from '../middleware/authentication';
+import multer from 'multer';
+import { authenticateUser, authorizePermissions } from '../middleware/authentication.js';
 import {
   deleteImage,
   uploadImage
-} from '../controllers/imageController';
-import { Role } from '../utils/role';
-import multer from 'multer';
+} from '../controllers/imageController.js';
+import { Role } from '../utils/role.js';
 
 const router = express.Router();
 const storage = multer.memoryStorage();

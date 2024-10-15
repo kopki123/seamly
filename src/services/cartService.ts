@@ -1,4 +1,4 @@
-import prisma from '../prisma/prisma-client';
+import prisma from '../prisma/prisma-client.js';
 // import { Cart } from '@prisma/client';
 
 const isCartItemOwnedByUser = async (userId: string, cartItemId: string) => {
