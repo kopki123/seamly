@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id    String @id @default(uuid())
+  email String @unique
+  password String
+  role Int @default(0)
+  verificationToken String?
+  isVerified Boolean @default(false)
+  verified DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  refreshToken RefreshToken[]
+  Cart Cart[]
+  Order Order[]
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model Product {
+  id    String  @id @default(uuid())
+  title  String
+  price Int
+  description String
+  content String
+  image String
+  categoryId String
+  checked Boolean @default(false)
+  sold Int @default(0)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  cartItems CartItem[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  OrderItem OrderItem[]
+}
+
+model Category {
+  id    String  @id @default(uuid())
+  name  String  @unique
+  Product Product[]
+}
+
+model Cart {
+  id        String   @id @default(uuid())
+  userId  String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cartItems CartItem[]
+  numItemsInCart Int @default(0)
+  cartTotal Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  cart     Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId   String
+  quantity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String
+  orderItems OrderItem[]
+  totalAmount Int
+  deliveryFee Int
+  name String
+  phone String
+  payMethod String
+  pickMethod String
+  isPaid Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  order     Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
+  quantity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+

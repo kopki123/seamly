@@ -1,0 +1,20 @@
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+
+export default [
+  {files: ['**/*.{js,mjs,cjs,ts}']},
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    rules: {
+      semi: 'error',
+      'prefer-const': 'error',
+      'no-unused-vars': 'error',
+      'quotes': ['error', 'single'],
+      'linebreak-style': ['error', 'unix'],
+    },
+    ignores: ['./client/*']
+  }
+];

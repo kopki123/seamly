@@ -1,0 +1,10 @@
+<template>
+  <div
+    class="
+      w-full
+      h-[2px]
+      rounded-3xl
+      bg-primary
+    "
+  />
+</template>
