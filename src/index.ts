@@ -38,7 +38,7 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ['\'self\''],
     formAction: ['\'self\'', 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5'],
-    scriptSrc: ['\'self\'', `'nonce-${crypto.randomBytes(16).toString('base64')}'`] // 允許使用該 nonce 的內聯腳本
+    scriptSrc: ['\'self\'', '\'unsafe-inline\''],  // 允許內聯腳本執行
   }
 }));
 app.use(cors());
