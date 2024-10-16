@@ -1,13 +1,13 @@
+import 'express-async-errors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import express, { Request, Response } from 'express';
-import 'express-async-errors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import history from 'connect-history-api-fallback';
-// import errorHandlerMiddleware from './middleware/errorHandler.js';
+import errorHandlerMiddleware from './middleware/errorHandler.js';
 import notFoundMiddleware from './middleware/notFound.js';
 
 import authRouter from './routes/authRoutes.js';
@@ -49,7 +49,7 @@ app.use('/api/v1/uploads', imageRoutes);
 
 // Middlewares
 app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 const start = async () => {
