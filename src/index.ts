@@ -17,19 +17,20 @@ import categoryRoute from './routes/categoryRoute.js';
 import cartRoutes from './routes/cartRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import imageRoutes from './routes/imageRoutes.js';
+import checkoutRoute from './routes/checkoutRoute.js';
 
 dotenv.config();
 
 const app = express();
-app.use(history());
 
 // Client
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
-app.use(express.static(path.join(__dirname, '../public')));
+// app.use(history());
+// const __dirname = fileURLToPath(new URL('.', import.meta.url));
+// app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '../public'));
-});
+// app.get('/', (req: Request, res: Response) => {
+//   res.sendFile(path.join(__dirname, '../public'));
+// });
 
 // Middlewares
 app.use(helmet());
@@ -46,6 +47,7 @@ app.use('/api/v1/categories', categoryRoute);
 app.use('/api/v1/cart', cartRoutes);
 app.use('/api/v1/orders', orderRoutes);
 app.use('/api/v1/uploads', imageRoutes);
+app.use('/api/v1/checkout', checkoutRoute);
 
 // Middlewares
 app.use(notFoundMiddleware);
