@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
     TradeDesc: '測試交易描述',
     ItemName: '測試商品等',
     ReturnURL: `${process.env.HOST}/api/v1/checkout/return`,
-    ClientBackURL: `${process.env.HOST}/clientReturn`,
+    ClientBackURL: `${process.env.HOST}/api/v1/checkout/clientReturn`,
   };
 
   const create = new ecpay_payment(options);
@@ -54,23 +54,6 @@ router.get('/', (req, res) => {
 
 // 後端接收綠界回傳的資料
 router.post('/return', async (req, res) => {
-  const options = {
-    OperationMode: 'Test',
-    MercProfile: {
-      MerchantID: process.env.MERCHANTID,
-      HashKey: process.env.HASHKEY,
-      HashIV: process.env.HASHIV,
-    },
-    IgnorePayment: [
-      //    "Credit",
-      //    "WebATM",
-      //    "ATM",
-      //    "CVS",
-      //    "BARCODE",
-      //    "AndroidPay"
-    ],
-    IsProjectContractor: false,
-  };
   console.log('req.body:', req.body);
 
   const { CheckMacValue } = req.body;
@@ -80,14 +63,7 @@ router.post('/return', async (req, res) => {
   const create = new ecpay_payment(options);
   const checkValue = create.payment_client.helper.gen_chk_mac_value(data);
 
-  console.log(
-    '確認交易正確性：',
-    CheckMacValue === checkValue,
-    CheckMacValue,
-    checkValue,
-  );
-
-  // 交易成功後，需要回傳 1|OK 給綠界
+  console.log('確認交易正確性：', CheckMacValue === checkValue, CheckMacValue, checkValue);
   res.send('1|OK');
 });
 
