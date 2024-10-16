@@ -5,39 +5,26 @@ import ecpay_payment from 'ecpay_aio_nodejs';
 const router = express.Router();
 
 // 綠界提供的 SDK
-const { MERCHANTID, HASHKEY, HASHIV, HOST } = process.env;
-
-
-// SDK 提供的範例，初始化
-// https://github.com/ECPay/ECPayAIO_Node.js/blob/master/ECPAY_Payment_node_js/conf/config-example.js
-
-
-let TradeNo;
+const TradeNo = 'test' + new Date().getTime();
+const options = {
+  OperationMode: 'Test',
+  MercProfile: {
+    MerchantID: process.env.MERCHANTID,
+    HashKey: process.env.HASHKEY,
+    HashIV: process.env.HASHIV,
+  },
+  IgnorePayment: [
+    //    "Credit",
+    //    "WebATM",
+    //    "ATM",
+    //    "CVS",
+    //    "BARCODE",
+    //    "AndroidPay"
+  ],
+  IsProjectContractor: false,
+};
 
 router.get('/', (req, res) => {
-  console.log(process.env.MERCHANTID);
-  console.log(process.env.HASHKEY);
-  console.log(process.env.HASHIV);
-
-  const options = {
-    OperationMode: 'Test',
-    MercProfile: {
-      MerchantID: process.env.MERCHANTID,
-      HashKey: process.env.HASHKEY,
-      HashIV: process.env.HASHIV,
-    },
-    IgnorePayment: [
-      //    "Credit",
-      //    "WebATM",
-      //    "ATM",
-      //    "CVS",
-      //    "BARCODE",
-      //    "AndroidPay"
-    ],
-    IsProjectContractor: false,
-  };
-  // SDK 提供的範例，參數設定
-  // https://github.com/ECPay/ECPayAIO_Node.js/blob/master/ECPAY_Payment_node_js/conf/config-example.js
   const MerchantTradeDate = new Date().toLocaleString('zh-TW', {
     year: 'numeric',
     month: '2-digit',
@@ -48,23 +35,19 @@ router.get('/', (req, res) => {
     hour12: false,
     timeZone: 'UTC',
   });
-  TradeNo = 'test' + new Date().getTime();
+
   const base_param = {
-    MerchantTradeNo: TradeNo, //請帶20碼uid, ex: f0a0d7e9fae1bb72bc93
+    MerchantTradeNo: TradeNo,
     MerchantTradeDate,
     TotalAmount: '100',
     TradeDesc: '測試交易描述',
     ItemName: '測試商品等',
-    ReturnURL: `${process.env.HOST}/return`,
+    ReturnURL: `${process.env.HOST}/api/v1/checkout/return`,
     ClientBackURL: `${process.env.HOST}/clientReturn`,
   };
 
-  console.log(base_param);
   const create = new ecpay_payment(options);
-
-  // 注意：在此事直接提供 html + js 直接觸發的範例，直接從前端觸發付款行為
   const html = create.payment_client.aio_check_out_all(base_param);
-  console.log(html);
 
   res.send(html);
 });
