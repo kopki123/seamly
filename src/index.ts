@@ -5,6 +5,7 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import cors from 'cors';
+import crypto from 'crypto';
 import cookieParser from 'cookie-parser';
 import history from 'connect-history-api-fallback';
 import errorHandlerMiddleware from './middleware/errorHandler.js';
@@ -36,7 +37,8 @@ const app = express();
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ['\'self\''],
-    formAction: ['\'self\'', 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5']
+    formAction: ['\'self\'', 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5'],
+    scriptSrc: ['\'self\'', `'nonce-${crypto.randomBytes(16).toString('base64')}'`] // 允許使用該 nonce 的內聯腳本
   }
 }));
 app.use(cors());
