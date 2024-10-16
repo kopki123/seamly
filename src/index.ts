@@ -5,7 +5,6 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import cors from 'cors';
-import crypto from 'crypto';
 import cookieParser from 'cookie-parser';
 import history from 'connect-history-api-fallback';
 import errorHandlerMiddleware from './middleware/errorHandler.js';
@@ -25,13 +24,13 @@ dotenv.config();
 const app = express();
 
 // Client
-// app.use(history());
-// const __dirname = fileURLToPath(new URL('.', import.meta.url));
-// app.use(express.static(path.join(__dirname, '../public')));
+app.use(history());
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+app.use(express.static(path.join(__dirname, '../public')));
 
-// app.get('/', (req: Request, res: Response) => {
-//   res.sendFile(path.join(__dirname, '../public'));
-// });
+app.get('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../public'));
+});
 
 // Middlewares
 app.use(helmet.contentSecurityPolicy({
