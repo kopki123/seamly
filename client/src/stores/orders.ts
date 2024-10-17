@@ -1,6 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import { defineStore, acceptHMRUpdate } from 'pinia';
 import * as ordersApiService from '@/api/orders';
+import * as checkoutApiService from '@/api/checkout';
 import type { Order } from '@/api/orders/getAllOrders';
 
 export const useOrdersStore = defineStore({
@@ -10,6 +10,7 @@ export const useOrdersStore = defineStore({
   }),
   actions: {
     getSingleOrder: ordersApiService.getSingleOrder,
+    checkout: checkoutApiService.checkout,
     async getAllOrders () {
       const response = await ordersApiService.getAllOrders();
 

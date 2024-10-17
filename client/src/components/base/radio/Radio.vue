@@ -17,7 +17,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string | number | null): void;
 }>();
 
-const radioId = String(Date.now());
+const radioId = String(Math.random()).slice(2);
 
 const currentValue = computed({
   get () {

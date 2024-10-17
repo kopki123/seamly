@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import {
-  computed, onMounted, reactive, ref,
+  computed,
+  onMounted,
+  reactive,
+  ref,
+  nextTick
 } from 'vue';
 import { useRouter } from 'vue-router';
 import { useOrdersStore } from '@/stores/orders';
@@ -72,7 +76,20 @@ async function handleSubmit () {
     return;
   }
 
-  router.push({ name: 'order', params: { id: response.data!.order.id } });
+  const { id } = response.data!.order;
+  if(form.payMethod === 'online') {
+    const response = await ordersStore.checkout({ id });
+    document.body.insertAdjacentHTML('afterend', response.data!.html);
+    nextTick(() => {
+      const form = document.getElementById('_form_aiochk');
+      if (form) {
+        // @ts-ignore
+        form.submit();
+      }
+    });
+  } else {
+    router.push({ name: 'order', params: { id: response.data!.order.id } });
+  }
 }
 
 onMounted(async () => {

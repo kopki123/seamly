@@ -1,6 +1,6 @@
 export const payMethodOptions = [
-  { value: 'cashOnDelivery', label: '貨到付款' },
   { value: 'online', label: '線上支付' },
+  { value: 'cashOnDelivery', label: '貨到付款' },
 ];
 
 export const pickMethodOptions = [

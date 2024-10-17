@@ -38,7 +38,7 @@ const updateOrderStatus = async (req: Request, res: Response) => {
 
   const updatedOrder = await orderService.updateOrderStatus({ orderId: id, userId, isPaid });
 
-  res.status(StatusCodes.OK).json(apiResponse());
+  res.status(StatusCodes.OK).json(apiResponse({ data: { order: updatedOrder } }));
 };
 
 export {
