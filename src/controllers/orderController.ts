@@ -34,9 +34,8 @@ const deleteOrder = async (req: Request, res: Response) => {
 const updateOrderStatus = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { isPaid } = req.body;
-  const userId = req.user.userId;
 
-  const updatedOrder = await orderService.updateOrderStatus({ orderId: id, userId, isPaid });
+  const updatedOrder = await orderService.updateOrderStatus({ orderId: id, isPaid });
 
   res.status(StatusCodes.OK).json(apiResponse({ data: { order: updatedOrder } }));
 };
