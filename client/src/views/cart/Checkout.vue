@@ -69,10 +69,10 @@ async function handleSubmit () {
   const { destroy } = useGlobalLoading();
   const response = await ordersStore.createOrder({ ...form, deliveryFee: deliveryFee.value });
   isSubmit.value = false;
-  destroy();
 
   if (response.status === 'error') {
     useMessage({ message: '建立訂單失敗', type: 'error' });
+    destroy();
     return;
   }
 
@@ -90,6 +90,8 @@ async function handleSubmit () {
   } else {
     router.push({ name: 'order', params: { id: response.data!.order.id } });
   }
+
+  destroy();
 }
 
 onMounted(async () => {

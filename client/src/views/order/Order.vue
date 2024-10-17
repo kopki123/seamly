@@ -50,7 +50,7 @@ onMounted(async () => {
   destroy();
 
   if (response.status === 'error') {
-    router.back();
+    router.push({ name: 'home' });
   }
 
   order.value = response.data?.order;

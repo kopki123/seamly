@@ -37,12 +37,13 @@ const checkout = async (req: Request, res: Response) => {
 
   const create = new ECPayPayment(options);
   const html = create.payment_client.aio_check_out_all(baseParam);
-  console.log(html);
 
   res.status(StatusCodes.OK).json(apiResponse({ data: { html } }));
 };
 
 const checkoutReturn = async (req: Request, res: Response) => {
+  console.log('!!!!!!!!!');
+
   const userId = req.user.userId;
   const { id: orderId } = req.params;
 
