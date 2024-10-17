@@ -42,8 +42,6 @@ const checkout = async (req: Request, res: Response) => {
 };
 
 const checkoutReturn = async (req: Request, res: Response) => {
-  console.log('!!!!!!!!!');
-
   const { id: orderId } = req.params;
 
   const options = {
