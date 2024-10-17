@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ecpay_payment from 'ecpay_aio_nodejs';
+import ECPayPayment from 'ecpay_aio_nodejs';
 import StatusCodes from 'http-status-codes';
 import apiResponse from '../utils/apiResponse.js';
 import createDateToLocaleString from '../utils/createDateToLocaleString.js';
@@ -14,12 +14,13 @@ const checkout = async (req: Request, res: Response) => {
 
   const options = {
     OperationMode: 'Test',
-    IsProjectContractor: false,
     MercProfile: {
       MerchantID: process.env.MERCHANTID,
       HashKey: process.env.HASHKEY,
       HashIV: process.env.HASHIV,
     },
+    IgnorePayment: [],
+    IsProjectContractor: false,
   };
 
   const MerchantTradeDate = createDateToLocaleString();
@@ -27,15 +28,16 @@ const checkout = async (req: Request, res: Response) => {
   const baseParam = {
     MerchantTradeNo,
     MerchantTradeDate,
-    TotalAmount: order.totalAmount,
+    TotalAmount: String(order.totalAmount),
     TradeDesc: '測試交易描述',
     ItemName: '測試商品',
     ReturnURL: `${process.env.HOST}/api/v1/checkout/return/${orderId}`,
     ClientBackURL: `${process.env.HOST}/order/${orderId}`,
   };
 
-  const create = new ecpay_payment(options);
+  const create = new ECPayPayment(options);
   const html = create.payment_client.aio_check_out_all(baseParam);
+  console.log(html);
 
   res.status(StatusCodes.OK).json(apiResponse({ data: { html } }));
 };
@@ -47,6 +49,7 @@ const checkoutReturn = async (req: Request, res: Response) => {
   const options = {
     OperationMode: 'Test',
     IsProjectContractor: false,
+    IgnorePayment: [],
     MercProfile: {
       MerchantID: process.env.MERCHANTID,
       HashKey: process.env.HASHKEY,
@@ -56,9 +59,10 @@ const checkoutReturn = async (req: Request, res: Response) => {
 
   const { CheckMacValue } = req.body;
 
-  const create = new ecpay_payment(options);
+  const create = new ECPayPayment(options);
   const checkValue = create.payment_client.helper.gen_chk_mac_value(req.body);
   const isPaid = CheckMacValue === checkValue;
+  console.log('isPaid', isPaid);
 
   await orderService.updateOrderStatus({ orderId, userId, isPaid });
   res.send('1|OK');
