@@ -58,11 +58,12 @@ const checkoutReturn = async (req: Request, res: Response) => {
   };
 
   const { CheckMacValue } = req.body;
+  const data = { ...req.body };
+  delete data.CheckMacValue;
 
   const create = new ECPayPayment(options);
-  const checkValue = create.payment_client.helper.gen_chk_mac_value(req.body);
+  const checkValue = create.payment_client.helper.gen_chk_mac_value(data);
   const isPaid = CheckMacValue === checkValue;
-  console.log('isPaid', isPaid);
 
   await orderService.updateOrderStatus({ orderId, isPaid });
   res.send('1|OK');
