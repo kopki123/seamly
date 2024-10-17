@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.route('/:id').get(authenticateUser, checkout);
 // 後端接收綠界回傳的資料
-router.route('/return/:id').post(authenticateUser, checkoutReturn);
+router.route('/return/:id').post(checkoutReturn);
 
 export default router;
