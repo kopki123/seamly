@@ -44,7 +44,6 @@ const checkout = async (req: Request, res: Response) => {
 const checkoutReturn = async (req: Request, res: Response) => {
   console.log('!!!!!!!!!');
 
-  const userId = req.user.userId;
   const { id: orderId } = req.params;
 
   const options = {
@@ -65,7 +64,7 @@ const checkoutReturn = async (req: Request, res: Response) => {
   const isPaid = CheckMacValue === checkValue;
   console.log('isPaid', isPaid);
 
-  await orderService.updateOrderStatus({ orderId, userId, isPaid });
+  await orderService.updateOrderStatus({ orderId, isPaid });
   res.send('1|OK');
 };
 

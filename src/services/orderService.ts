@@ -114,11 +114,10 @@ const deleteOrder = async (orderId: string) => {
   return order;
 };
 
-const updateOrderStatus = async ({ orderId, userId, isPaid }: { orderId: string, userId: string, isPaid: boolean }) => {
+const updateOrderStatus = async ({ orderId, isPaid }: { orderId: string, isPaid: boolean }) => {
   const order = await prisma.order.update({
     where: {
       id: orderId,
-      userId,
     },
     data: {
       isPaid
