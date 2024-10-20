@@ -6,7 +6,6 @@ type GetSingleProductResponse = ApiResponse<{
   product: Product;
 }>;
 
-// TODO
 export default async function getSingleProduct (payload: {
   id: string;
 }): Promise<GetSingleProductResponse> {

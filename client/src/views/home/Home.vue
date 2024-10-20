@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Carousel from '@/views/home/components/Carousel.vue';
+import SearchBar from '@/views/home/components/SearchBar.vue';
 import Products from '@/views/home/components/Products.vue';
 </script>
 
@@ -11,6 +12,7 @@ import Products from '@/views/home/components/Products.vue';
     "
   >
     <Carousel />
+    <SearchBar />
     <Products />
   </div>
 </template>

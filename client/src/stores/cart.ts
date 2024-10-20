@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { defineStore, acceptHMRUpdate } from 'pinia';
 import * as cartApiService from '@/api/cart';
 import type { CartItem } from '@/api/cart/getCart';
@@ -12,7 +11,6 @@ export const useCartStore = defineStore({
     cartItems: [] as CartItem[],
   }),
   actions: {
-    addCartItem: cartApiService.addCartItem,
     async getCart () {
       const response = await cartApiService.getCart();
 
@@ -34,6 +32,19 @@ export const useCartStore = defineStore({
         cartItems,
       });
 
+      return response;
+    },
+    async addCartItem(payload: {
+      productId: string;
+      quantity: number;
+    }) {
+      const response = await cartApiService.addCartItem(payload);
+
+      if (response.status === 'error') {
+        return response;
+      }
+
+      await this.getCart();
       return response;
     },
     async removeCartItem (payload: { id: string; }) {

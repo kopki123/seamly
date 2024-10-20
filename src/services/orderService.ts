@@ -93,9 +93,22 @@ const createOrder = async (input: OrderInput) => {
       },
     },
     include: {
-      orderItems: true,  // 確保回傳訂單時包含 OrderItem
+      orderItems: true,
     },
   });
+
+  await Promise.all(order.orderItems.map(async (item) => {
+    await prisma.product.update({
+      where: {
+        id: item.productId,
+      },
+      data: {
+        sold: {
+          increment: item.quantity,
+        },
+      },
+    });
+  }));
 
   await prisma.cartItem.deleteMany({
     where: { cartId: cart.id },

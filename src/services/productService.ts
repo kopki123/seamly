@@ -12,11 +12,71 @@ const productSchema = Joi.object({
   categoryId: Joi.string().required(),
 });
 
-const getAllProducts = async () => {
+const getAllProducts = async ({ categoryId, keyword, minPrice, maxPrice, sort }: {
+  categoryId?: string;
+  keyword?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  sort?: string;
+} = {}) => {
+
+  let orderBy = {};
+  switch (sort) {
+    case 'newest':
+      orderBy = { createdAt: 'desc' };
+      break;
+    case 'oldest':
+      orderBy = { createdAt: 'asc' };
+      break;
+    case 'bestselling':
+      orderBy = { sold: 'desc' };
+      break;
+    case 'price-high-to-low':
+      orderBy = { price: 'desc' };
+      break;
+    case 'price-low-to-high':
+      orderBy = { price: 'asc' };
+      break;
+    default:
+      orderBy = { createdAt: 'desc' };
+      break;
+  }
+
   const products = await prisma.product.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    }
+    where: {
+      ...(categoryId && {
+        categoryId: {
+          equals: categoryId
+        },
+      }),
+      ...(keyword && {
+        OR: [
+          {
+            title: {
+              contains: keyword,
+              mode: 'insensitive',
+            },
+          },
+          {
+            description: {
+              contains: keyword,
+              mode: 'insensitive',
+            },
+          },
+        ],
+      }),
+      ...(minPrice && {
+        price: {
+          gte: parseFloat(minPrice),
+        },
+      }),
+      ...(maxPrice && {
+        price: {
+          lte: parseFloat(maxPrice),
+        },
+      }),
+    },
+    orderBy
   });
 
   return products;

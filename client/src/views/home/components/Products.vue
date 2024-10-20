@@ -23,7 +23,8 @@ onMounted(async () => {
   <div
     class="
       mt-12 mx-auto
-      grid gap-4 px-4
+      px-4
+      grid gap-4
       xl:px-0 sm:grid-cols-2 lg:grid-cols-3
     "
   >

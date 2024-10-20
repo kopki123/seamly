@@ -48,7 +48,7 @@ onMounted(async () => {
 
   if (response.status === 'error') {
     destroy();
-    router.push('/');
+    router.push({ name: 'home' });
     return;
   }
 
@@ -108,6 +108,11 @@ onMounted(async () => {
             class="text-2xl"
           />
         </p>
+
+        <p
+          v-text="`已銷售${product!.sold}件`"
+          class="text-sm"
+        />
 
         <p
           v-text="product!.content"

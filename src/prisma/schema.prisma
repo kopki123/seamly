@@ -47,7 +47,6 @@ model Product {
   content String
   image String
   categoryId String
-  checked Boolean @default(false)
   sold Int @default(0)
   category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   cartItems CartItem[]

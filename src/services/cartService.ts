@@ -1,5 +1,5 @@
 import prisma from '../prisma/prisma-client.js';
-// import { Cart } from '@prisma/client';
+import { Cart } from '@prisma/client';
 
 const isCartItemOwnedByUser = async (userId: string, cartItemId: string) => {
   const cartItem = await prisma.cartItem.findUnique({
@@ -93,8 +93,7 @@ const getCart = async (userId: string) => {
   return currentCart;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const updateCart = async (cart: any) => {
+const updateCart = async (cart: Cart) => {
   const cartItems = await prisma.cartItem.findMany({
     where: {
       cartId: cart.id,

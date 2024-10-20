@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation } from 'swiper/modules';
 
 const modules = [Navigation, Pagination];
-
 const carouselImgUrls = [
   'https://rhhmkjqbhjbtggyyuoie.supabase.co/storage/v1/object/public/main-bucket/1729006363481-slider-1.png',
   'https://rhhmkjqbhjbtggyyuoie.supabase.co/storage/v1/object/public/main-bucket/1729008984617-slider-2.png',
@@ -48,7 +47,7 @@ const pagination = {
 
 <style>
 
-.swiper{
+.swiper {
   --swiper-theme-color: #B0A695;
   --swiper-navigation-color: #B0A695;
   --swiper-navigation-size: 30px;

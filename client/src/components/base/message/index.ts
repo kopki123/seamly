@@ -5,11 +5,11 @@ import Message from './Message.vue';
 export type MessageType = 'info' | 'success' | 'error';
 
 export interface MessageOption {
-  id?: number
-  type?: MessageType
-  duration?: number
+  id?: number;
+  type?: MessageType;
+  duration?: number;
   message: string;
-  offset?: number
+  offset?: number;
   onDestroy?: () => void;
   onClose?: () => void;
 }

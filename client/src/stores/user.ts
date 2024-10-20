@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { defineStore, acceptHMRUpdate } from 'pinia';
 import * as authApiService from '@/api/auth';
 import * as userApiService from '@/api/user';

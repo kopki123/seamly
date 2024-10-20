@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { defineStore, acceptHMRUpdate } from 'pinia';
 import * as productsApiService from '@/api/products';
 import type { Product } from '@/api/products/getAllProducts';
@@ -10,8 +9,14 @@ export const useProductsStore = defineStore({
   }),
   actions: {
     getSingleProduct: productsApiService.getSingleProduct,
-    async getAllProducts () {
-      const response = await productsApiService.getAllProducts();
+    async getAllProducts (payload: {
+      categoryId?: string;
+      keyword?: string;
+      minPrice?: number;
+      maxPrice?: number;
+      sort?: string;
+    } = {}) {
+      const response = await productsApiService.getAllProducts(payload);
 
       if (response.status === 'error') {
         return;

@@ -53,16 +53,12 @@ const createUser = async (input: RegisterInput): Promise<RegisteredUser> => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const updateUser = async (userPayload: any, email: string) => {
-  // TODO
-  // const hashedPassword = await bcrypt.hash(password, 10);
-
   const user = await prisma.user.update({
     where: {
       email,
     },
     data: {
       ...userPayload,
-      // ...(password ? { password: hashedPassword } : {}),
     },
     select: {
       email: true,

@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{
   modelValue: string;
   disabled?: boolean;
   placeholder?: string;
-  type?: 'text' | 'password' | 'email';
+  type?: 'text' | 'number' | 'password' | 'email';
   maxlength?: number;
   onChange?: (value: string) => void;
 }>(), {
@@ -53,11 +53,10 @@ function togglePasswordVisible () {
       input-main
       relative
       flex items-center
-      h-[36px]
-      text-[16px]
+      h-9
       bg-white
       border-2 border-gray-200
-      rounded-[5px]
+      rounded-sm
       shadow-[0_0px_2px_rgba(0,0,0,0.6)]
     "
   >

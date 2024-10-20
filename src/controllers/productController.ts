@@ -4,7 +4,15 @@ import * as productService from '../services/productService.js';
 import apiResponse from '../utils/apiResponse.js';
 
 const getAllProducts = async (req: Request, res: Response) => {
-  const products = await productService.getAllProducts();
+  const { categoryId, keyword, minPrice, maxPrice, sort }: {
+    categoryId?: string;
+    keyword?: string;
+    minPrice?: string;
+    maxPrice?: string;
+    sort?: string;
+  } = req.query;
+
+  const products = await productService.getAllProducts({ categoryId, keyword, minPrice, maxPrice, sort });
 
   res.status(StatusCodes.OK).json(apiResponse({ data: { products, count: products.length } }));
 };

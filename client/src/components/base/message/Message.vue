@@ -70,15 +70,13 @@ onMounted(() => {
         -translate-x-1/2
       "
       :class="[classString]"
-      :style="{
-        top,
-      }"
+      :style="{top}"
     >
       <component
         :is="icon"
         class="w-4 h-4"
       />
-      {{ message }}
+      <p v-text="message"/>
     </div>
   </transition>
 </template>
