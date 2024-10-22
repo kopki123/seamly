@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import history from 'connect-history-api-fallback';
 import errorHandlerMiddleware from './middleware/errorHandler.js';
 import notFoundMiddleware from './middleware/notFound.js';
+import { corsOptionsDelegate } from './utils/cors.js';
 
 import authRouter from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -20,7 +21,6 @@ import imageRoutes from './routes/imageRoutes.js';
 import checkoutRoute from './routes/checkoutRoute.js';
 
 dotenv.config();
-
 const app = express();
 
 // Client
@@ -39,7 +39,7 @@ app.use(helmet.contentSecurityPolicy({
     formAction: ['\'self\'', 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5'],
   }
 }));
-app.use(cors());
+app.use(cors(corsOptionsDelegate));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.urlencoded({ extended: true }));

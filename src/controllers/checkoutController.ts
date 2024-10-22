@@ -42,6 +42,7 @@ const checkout = async (req: Request, res: Response) => {
 };
 
 const checkoutReturn = async (req: Request, res: Response) => {
+  console.log('checkoutReturn');
   const { id: orderId } = req.params;
 
   const options = {
@@ -69,5 +70,5 @@ const checkoutReturn = async (req: Request, res: Response) => {
 
 export {
   checkout,
-  checkoutReturn
+  checkoutReturn,
 };

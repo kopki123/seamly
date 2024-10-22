@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import * as orderService from '../services/orderService.js';
 import apiResponse from '../utils/apiResponse.js';
+import checkPermissions from '../utils/checkPermissions.js';
 
 const getUserOrders = async (req: Request, res: Response) => {
   const userId = req.user.userId;
@@ -13,6 +14,7 @@ const getUserOrders = async (req: Request, res: Response) => {
 const getOrderById = async (req: Request, res: Response) => {
   const { id } = req.params;
   const order = await orderService.getOrderById(id);
+  checkPermissions(req.user, order.userId);
 
   res.status(StatusCodes.OK).json(apiResponse({ data: { order } }));
 };
