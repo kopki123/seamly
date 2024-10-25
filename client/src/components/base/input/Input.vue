@@ -4,12 +4,12 @@ import BaseButton from '@/components/base/button/BaseButton.vue';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline';
 
 const props = withDefaults(defineProps<{
-  modelValue: string;
+  modelValue: string | number;
   disabled?: boolean;
   placeholder?: string;
   type?: 'text' | 'number' | 'password' | 'email';
   maxlength?: number;
-  onChange?: (value: string) => void;
+  onChange?: (value: string | number) => void;
 }>(), {
   disabled: false,
   placeholder: '',
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
+  (e: 'update:modelValue', value: string | number): void;
 }>();
 
 const isPasswordVisible = ref(false);
@@ -37,7 +37,7 @@ const inputValue = computed({
     return props.modelValue;
   },
   set (value) {
-    emit('update:modelValue', value);
+    emit('update:modelValue', props.type === 'number' ? +value : value);
   },
 });
 

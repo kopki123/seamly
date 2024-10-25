@@ -7,7 +7,12 @@ const categorySchema = Joi.object({
 });
 
 const getAllCategories = async () => {
-  const categories = await prisma.category.findMany();
+  const categories = await prisma.category.findMany({
+    select: {
+      id: true,
+      name: true,
+    }
+  });
 
   return categories;
 };
@@ -23,6 +28,10 @@ const createCategory = async ({ name }: { name: string }) => {
   const category = await prisma.category.create({
     data: {
       name,
+    },
+    select: {
+      id: true,
+      name: true,
     }
   });
 
@@ -36,6 +45,10 @@ const updateCategory = async (categoryName: string, id: string) => {
     },
     data: {
       name: categoryName
+    },
+    select: {
+      id: true,
+      name: true,
     }
   });
 
@@ -46,6 +59,10 @@ const deleteCategory = async (id: string) => {
   const category = await prisma.category.delete({
     where: {
       id
+    },
+    select: {
+      id: true,
+      name: true,
     }
   });
 

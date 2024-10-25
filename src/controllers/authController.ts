@@ -41,13 +41,13 @@ const verifyEmail = async (req: Request, res: Response) => {
     throw new UnauthenticatedError('驗證失敗');
   }
 
-  await authService.updateUser({
+  const updatedUser = await authService.updateUser({
     isVerified: true,
     verified: new Date(),
     verificationToken: null,
   }, email);
 
-  res.status(StatusCodes.OK).json(apiResponse());
+  res.status(StatusCodes.OK).json(apiResponse({ data: { user: updatedUser } }));
 };
 
 const login = async (req: Request, res: Response) => {

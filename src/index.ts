@@ -41,7 +41,7 @@ app.use(helmet.contentSecurityPolicy({
 }));
 app.use(cors(corsOptionsDelegate));
 app.use(express.json());
-app.use(cookieParser(process.env.JWT_SECRET));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.urlencoded({ extended: true }));
 
 // Routes

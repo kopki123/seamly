@@ -24,8 +24,8 @@ defineProps<{
         alt=""
         class="
           w-16 h-16
-          object-cover
-          rounded-xl
+          object-cover aspect-square
+          rounded
           overflow-hidden
         "
       >

@@ -1,5 +1,5 @@
 import prisma from '../prisma/prisma-client.js';
-import { generateRefreshToken } from '../utils/authJwt.js';
+import { generateRefreshToken, longerExp } from '../utils/authJwt.js';
 
 const createRefreshToken = async (user: { userId: string, role: number }) => {
   const refreshToken = generateRefreshToken(user);
@@ -7,7 +7,13 @@ const createRefreshToken = async (user: { userId: string, role: number }) => {
     data: {
       token: refreshToken,
       userId: user.userId,
-      expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+      expiresAt: new Date(Date.now() + longerExp),
+    },
+    select: {
+      id: true,
+      userId: true,
+      token: true,
+      expiresAt: true,
     }
   });
 
@@ -19,6 +25,12 @@ const findRefreshToken = async ({ token, userId }: { token: string, userId: stri
     where: {
       token,
       userId
+    },
+    select: {
+      id: true,
+      userId: true,
+      token: true,
+      expiresAt: true,
     }
   });
 

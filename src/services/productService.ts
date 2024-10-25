@@ -43,6 +43,16 @@ const getAllProducts = async ({ categoryId, keyword, minPrice, maxPrice, sort }:
   }
 
   const products = await prisma.product.findMany({
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      content: true,
+      image: true,
+      price: true,
+      sold: true,
+      categoryId: true,
+    },
     where: {
       ...(categoryId && {
         categoryId: {
@@ -86,6 +96,16 @@ const getSingleProduct = async (productId: string) => {
   const product = await prisma.product.findUnique({
     where: {
       id: productId
+    },
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      content: true,
+      image: true,
+      price: true,
+      sold: true,
+      categoryId: true,
     }
   });
 
@@ -105,20 +125,28 @@ const createProduct = async (productContent: Product) => {
   }
 
   const product = await prisma.product.create({
-    data: productContent
+    data: productContent,
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      content: true,
+      image: true,
+      price: true,
+      sold: true,
+      categoryId: true,
+    }
   });
 
   return product;
 };
 
 const deleteProduct = async (productId: string) => {
-  const product = await prisma.product.delete({
+  await prisma.product.delete({
     where: {
       id: productId
     }
   });
-
-  return product;
 };
 
 const updateProduct = async (productId: string, updateData: Product) => {
@@ -130,8 +158,20 @@ const updateProduct = async (productId: string, updateData: Product) => {
   }
 
   const product = await prisma.product.update({
-    where: { id: productId },
-    data: updateData
+    where: {
+      id: productId
+    },
+    data: updateData,
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      content: true,
+      image: true,
+      price: true,
+      sold: true,
+      categoryId: true,
+    }
   });
 
   return product;

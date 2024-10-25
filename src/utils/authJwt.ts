@@ -1,15 +1,19 @@
 import { Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-const oneDay = 1000 * 60 * 60 * 24;
-const longerExp = 1000 * 60 * 60 * 24 * 30;
+export const oneDay = 1000 * 60 * 60 * 24;
+export const longerExp = 1000 * 60 * 60 * 24 * 30;
 
 const isTokenValid = (token: string) => {
-  return jwt.verify(token, process.env.JWT_SECRET);
+  return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+};
+
+const isRefreshTokenValid = (token: string) => {
+  return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
 };
 
 const generateAccessToken = (user: { userId: string, role: number }) => {
-  return jwt.sign({ user }, process.env.JWT_SECRET);
+  return jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET);
 };
 
 const generateRefreshToken = (user: { userId: string, role: number }) => {
@@ -41,5 +45,6 @@ export {
   generateAccessToken,
   generateRefreshToken,
   isTokenValid,
+  isRefreshTokenValid,
   attachCookiesToResponse,
 };

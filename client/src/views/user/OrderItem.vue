@@ -47,7 +47,12 @@ const totalQuantity = computed(() => props.order.orderItems.reduce((sum, item) =
           :key="item.id"
           :src="item.product.image"
           alt=""
-          class="w-16 h-16 rounded"
+          class="
+            w-16 h-16
+            object-cover aspect-square
+            rounded
+            overflow-hidden
+          "
         >
       </div>
       <div

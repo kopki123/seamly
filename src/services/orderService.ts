@@ -17,13 +17,38 @@ const getUserOrders = async (userId: string) => {
     where: {
       userId
     },
-    include: {
-      orderItems: {
-        include: { product: true },
-      },
-    },
     orderBy: {
       createdAt: 'desc',
+    },
+    select: {
+      id: true,
+      deliveryFee: true,
+      isPaid: true,
+      name: true,
+      payMethod: true,
+      phone: true,
+      pickMethod: true,
+      totalAmount: true,
+      userId: true,
+      orderItems: {
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
+        }
+      },
     }
   });
 
@@ -35,9 +60,34 @@ const getOrderById = async (orderId: string) => {
     where: {
       id: orderId
     },
-    include: {
+    select: {
+      id: true,
+      deliveryFee: true,
+      isPaid: true,
+      name: true,
+      payMethod: true,
+      phone: true,
+      pickMethod: true,
+      totalAmount: true,
+      userId: true,
       orderItems: {
-        include: { product: true },
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
+        }
       },
     }
   });
@@ -64,10 +114,17 @@ const createOrder = async (input: OrderInput) => {
 
   const cart = await prisma.cart.findUnique({
     where: { userId },
-    include: {
+    select: {
+      id: true,
+      cartTotal: true,
+      numItemsInCart: true,
       cartItems: {
-        include: { product: true },
-      },
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+        }
+      }
     },
   });
 
@@ -92,9 +149,36 @@ const createOrder = async (input: OrderInput) => {
         })),
       },
     },
-    include: {
-      orderItems: true,
-    },
+    select: {
+      id: true,
+      deliveryFee: true,
+      isPaid: true,
+      name: true,
+      payMethod: true,
+      phone: true,
+      pickMethod: true,
+      totalAmount: true,
+      userId: true,
+      orderItems: {
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
+        }
+      },
+    }
   });
 
   await Promise.all(order.orderItems.map(async (item) => {
@@ -121,6 +205,36 @@ const deleteOrder = async (orderId: string) => {
   const order = await prisma.order.delete({
     where: {
       id: orderId
+    },
+    select: {
+      id: true,
+      deliveryFee: true,
+      isPaid: true,
+      name: true,
+      payMethod: true,
+      phone: true,
+      pickMethod: true,
+      totalAmount: true,
+      userId: true,
+      orderItems: {
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
+        }
+      },
     }
   });
 
@@ -134,6 +248,36 @@ const updateOrderStatus = async ({ orderId, isPaid }: { orderId: string, isPaid:
     },
     data: {
       isPaid
+    },
+    select: {
+      id: true,
+      deliveryFee: true,
+      isPaid: true,
+      name: true,
+      payMethod: true,
+      phone: true,
+      pickMethod: true,
+      totalAmount: true,
+      userId: true,
+      orderItems: {
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
+        }
+      },
     }
   });
 

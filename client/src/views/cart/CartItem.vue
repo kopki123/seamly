@@ -74,8 +74,8 @@ watch(quantity, useDebounce(async (value: number) => {
         class="
           w-20 h-20
           lg:w-32 lg:h-32
-          object-cover
-          rounded-xl
+          object-cover aspect-square
+          rounded
           overflow-hidden
         "
       >

@@ -1,0 +1,1 @@
+import{i as s,C as a,d as t,o as n,c as r,a as c,x as u,u as l}from"./index-DiQle6U0.js";import{u as i}from"./index-CmhKHpco.js";const _=s({__name:"UserInfo",setup(p){const e=a();return t(async()=>{const{destroy:o}=i();await e.getUserInfo(),o()}),(o,m)=>(n(),r("div",null,[c("p",null,"電子郵件地址： "+u(l(e).email),1)]))}});export{_ as default};

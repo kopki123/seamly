@@ -38,7 +38,7 @@ const axiosClient = axios.create({
 
 // @ts-expect-error
 axiosClient.interceptors.response.use((response: AxiosResponse<ApiResponse>): ApiResponse => {
-  console.log(response);
+  // console.log(response);
   return response.data;
 }, (error: AxiosError<ApiResponse>): ApiResponse => {
   console.log(error);

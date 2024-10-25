@@ -4,8 +4,8 @@ import { useProductsStore } from '@/stores/products';
 import { useCategoriesStore } from '@/stores/categories';
 import Input from '@/components/base/input/Input.vue';
 import Select from '@/components/base/select/Select.vue';
-import { MagnifyingGlassIcon, CurrencyDollarIcon, Bars3BottomRightIcon } from '@heroicons/vue/24/outline';
-import useGlobalLoading from '@/components/base/loading';
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import useDebounce from '@/utils/useDebounce';
 
 const sortOptions = [
   { label: '最新', value: 'newest' },
@@ -21,8 +21,6 @@ const categoriesStore = useCategoriesStore();
 const filter = reactive({
   categoryId: 'all',
   keyword: '',
-  minPrice: '',
-  maxPrice: '',
   sort: 'newest'
 });
 
@@ -31,19 +29,13 @@ const categories = computed(() => ([
   ...categoriesStore.categories
 ]));
 
-watch(filter, async (value) => {
-  const { destroy } = useGlobalLoading();
-
+watch(filter, useDebounce(async (value) => {
   await productsStore.getAllProducts({
     categoryId: value.categoryId === 'all' ? '' : value.categoryId,
     keyword: value.keyword,
-    maxPrice: value.maxPrice ? +value.maxPrice : undefined,
-    minPrice: value.minPrice ? +value.minPrice : undefined,
     sort: value.sort
   });
-
-  destroy();
-})
+}, 0.8))
 
 onMounted(async () => {
   await categoriesStore.getAllCategories();
@@ -55,7 +47,7 @@ onMounted(async () => {
   <div
     class="
       mt-6 mx-auto
-      px-4
+      px-4 xl:px-0
     "
   >
     <div
@@ -85,26 +77,19 @@ onMounted(async () => {
 
     <div
       class="
-        p-4 md:p-6
-        border border-primary
-        rounded-md
-        grid grid-cols-1 md:grid-cols-4 justify-center items-center gap-4
+        flex flex-col gap-4
+        sm:flex-row sm:justify-between sm:items-center
       "
     >
-      <div
-        class="
-          w-full
-          flex justify-center items-center gap-3
-        "
-      >
-        <MagnifyingGlassIcon class="shrink-0 w-4 h-4 text-primary-dark" />
+      <div class="self-end flex items-center gap-3">
+        <MagnifyingGlassIcon class="w-4 h-4 text-primary-dark" />
         <Input
           v-model="filter.keyword"
-          class="w-full text-sm"
+          class="text-sm"
         />
       </div>
 
-      <div
+      <!-- <div
         class="
           md:col-span-2
           w-full
@@ -124,22 +109,13 @@ onMounted(async () => {
           placeholder="最大值"
           class="w-full text-sm"
         />
-      </div>
+      </div> -->
 
-      <div
-        class="
-          w-full
-          flex justify-center items-center gap-3
-        "
-      >
-        <Bars3BottomRightIcon class="shrink-0 w-4 h-4 text-primary-dark" />
-        <Select
-          v-model="filter.sort"
-          :options="sortOptions"
-          class="w-full text-sm"
-        />
-      </div>
-
+      <Select
+        v-model="filter.sort"
+        :options="sortOptions"
+        class="self-end text-sm"
+      />
     </div>
   </div>
 </template>

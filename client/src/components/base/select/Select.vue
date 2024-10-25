@@ -42,7 +42,7 @@ const currentOption = computed(() => props.options.find(({ value }) => value ===
       border-2 border-gray-200
       rounded-sm
       shadow-[0_0px_2px_rgba(0,0,0,0.6)]
-      font-medium
+      font-light
       pointer-events-none
     "
     :class="{
@@ -53,6 +53,7 @@ const currentOption = computed(() => props.options.find(({ value }) => value ===
     <select
       v-model="currentValue"
       class="
+        pr-8
         w-full h-8
         opacity-0
         pointer-events-auto
@@ -67,7 +68,7 @@ const currentOption = computed(() => props.options.find(({ value }) => value ===
         :value="option.value"
         class="
           whitespace-normal
-          text-white
+          text-white font-light
           bg-primary
         "
       >
@@ -79,7 +80,8 @@ const currentOption = computed(() => props.options.find(({ value }) => value ===
       class="
         absolute left-0 top-0
         w-full h-full
-        flex justify-center items-center
+        px-2
+        flex items-center
       "
     />
     <ChevronDownIcon

@@ -4,11 +4,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation } from 'swiper/modules';
+import slider1 from '@/assets/images/slider-1.webp';
+import slider2 from '@/assets/images/slider-2.webp';
 
 const modules = [Navigation, Pagination];
 const carouselImgUrls = [
-  'https://rhhmkjqbhjbtggyyuoie.supabase.co/storage/v1/object/public/main-bucket/1729006363481-slider-1.png',
-  'https://rhhmkjqbhjbtggyyuoie.supabase.co/storage/v1/object/public/main-bucket/1729008984617-slider-2.png',
+  slider1,
+  slider2,
+  slider1,
+  slider2,
 ];
 
 const pagination = {

@@ -80,7 +80,9 @@ onMounted(async () => {
         alt=""
         class="
           max-h-[500px]
-          rounded-lg
+          object-cover aspect-square
+          rounded
+          overflow-hidden
         "
       >
       <div class="flex flex-col gap-4">

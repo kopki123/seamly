@@ -97,14 +97,17 @@ onMounted(async () => {
         sm:flex-row sm:justify-between sm:items-end
       "
     >
-      <div class="flex gap-3">
+      <div
+        class="flex gap-3 hover:cursor-pointer"
+        @click="router.push(`/product/${item.product.id}`)"
+      >
         <img
           :src="item.product.image"
           alt=""
           class="
             w-16 h-16
-            object-cover
-            rounded-xl
+            object-cover aspect-square
+            rounded
             overflow-hidden
           "
         >

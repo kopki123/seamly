@@ -53,6 +53,7 @@ const createUser = async (input: RegisterInput): Promise<RegisteredUser> => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const updateUser = async (userPayload: any, email: string) => {
+  // TODO userPayload
   const user = await prisma.user.update({
     where: {
       email,
@@ -61,7 +62,9 @@ const updateUser = async (userPayload: any, email: string) => {
       ...userPayload,
     },
     select: {
+      id: true,
       email: true,
+      role: true,
     },
   });
 

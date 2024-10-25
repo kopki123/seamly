@@ -25,10 +25,27 @@ const fetchOrCreateCart = async ({
     where: {
       userId
     },
-    include: {
+    select: {
+      id: true,
+      cartTotal: true,
+      numItemsInCart: true,
       cartItems: {
-        include: {
-          product: true
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
         }
       }
     }
@@ -43,10 +60,27 @@ const fetchOrCreateCart = async ({
       data: {
         userId
       },
-      include: {
+      select: {
+        id: true,
+        cartTotal: true,
+        numItemsInCart: true,
         cartItems: {
-          include: {
-            product: true
+          select: {
+            id: true,
+            quantity: true,
+            productId: true,
+            product: {
+              select: {
+                id: true,
+                title: true,
+                description: true,
+                content: true,
+                image: true,
+                price: true,
+                sold: true,
+                categoryId: true,
+              }
+            }
           }
         }
       }
@@ -61,6 +95,10 @@ const updateOrCreateCartItem = async ({ productId, cartId, quantity }: { product
     where: {
       productId,
       cartId,
+    },
+    select: {
+      id: true,
+      quantity: true,
     }
   });
 
@@ -93,13 +131,19 @@ const getCart = async (userId: string) => {
   return currentCart;
 };
 
-const updateCart = async (cart: Cart) => {
+const updateCart = async (cart: Partial<Cart>) => {
   const cartItems = await prisma.cartItem.findMany({
     where: {
       cartId: cart.id,
     },
-    include: {
-      product: true
+    select: {
+      id: true,
+      quantity: true,
+      product: {
+        select: {
+          price: true,
+        }
+      }
     }
   });
 
@@ -119,16 +163,30 @@ const updateCart = async (cart: Cart) => {
       numItemsInCart,
       cartTotal,
     },
-    include: {
+    select: {
+      id: true,
+      cartTotal: true,
+      numItemsInCart: true,
       cartItems: {
-        include: {
-          product: true
-        },
-        orderBy: {
-          createdAt: 'asc'
+        select: {
+          id: true,
+          quantity: true,
+          productId: true,
+          product: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              image: true,
+              price: true,
+              sold: true,
+              categoryId: true,
+            }
+          }
         }
       }
-    },
+    }
   });
 
   return { cartItems, currentCart };
@@ -164,6 +222,23 @@ const updateCartItem = async({ quantity, cartItemId, userId }: { quantity: numbe
     },
     data: {
       quantity
+    },
+    select: {
+      id: true,
+      quantity: true,
+      productId: true,
+      product: {
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          content: true,
+          image: true,
+          price: true,
+          sold: true,
+          categoryId: true,
+        }
+      }
     }
   });
 
