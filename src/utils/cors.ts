@@ -2,7 +2,6 @@ import { Request } from 'express';
 
 const whitelist = [
   'https://seamly-h5sc.onrender.com',
-  'https://seamly.vercel.app'
 ];
 
 export const corsOptionsDelegate = (req: Request, callback) => {
