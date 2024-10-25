@@ -30,6 +30,7 @@ const getUserOrders = async (userId: string) => {
       pickMethod: true,
       totalAmount: true,
       userId: true,
+      createdAt: true,
       orderItems: {
         select: {
           id: true,
@@ -70,6 +71,7 @@ const getOrderById = async (orderId: string) => {
       pickMethod: true,
       totalAmount: true,
       userId: true,
+      createdAt: true,
       orderItems: {
         select: {
           id: true,
@@ -159,6 +161,7 @@ const createOrder = async (input: OrderInput) => {
       pickMethod: true,
       totalAmount: true,
       userId: true,
+      createdAt: true,
       orderItems: {
         select: {
           id: true,
@@ -259,6 +262,7 @@ const updateOrderStatus = async ({ orderId, isPaid }: { orderId: string, isPaid:
       pickMethod: true,
       totalAmount: true,
       userId: true,
+      createdAt: true,
       orderItems: {
         select: {
           id: true,

@@ -18,7 +18,7 @@ defineProps<{
       sm:flex-row sm:justify-between sm:items-end
     "
   >
-    <div class="flex gap-3">
+    <div class="sm:w-1/2 flex gap-3">
       <img
         :src="cartItem.product.image"
         alt=""
@@ -35,7 +35,7 @@ defineProps<{
       </div>
     </div>
 
-    <div class="w-2/3 flex justify-between items-baseline">
+    <div class="sm:w-1/2 flex justify-between items-baseline">
       <p class="text-xs sm:text-md text-primary-dark">
         NT.
         <span

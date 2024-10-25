@@ -98,7 +98,7 @@ onMounted(async () => {
       "
     >
       <div
-        class="flex gap-3 hover:cursor-pointer"
+        class="sm:w-1/2 flex gap-3 hover:cursor-pointer"
         @click="router.push(`/product/${item.product.id}`)"
       >
         <img
@@ -112,12 +112,18 @@ onMounted(async () => {
           "
         >
         <div class="flex flex-col gap-2">
-          <p v-text="item.product.title" class="text-lg" />
-          <p v-text="item.product.description" class="text-xs" />
+          <p
+            v-text="item.product.title"
+            class="text-lg"
+          />
+          <p
+            v-text="item.product.description"
+            class="text-xs"
+          />
         </div>
       </div>
 
-      <div class="w-2/3 flex justify-between items-baseline">
+      <div class="sm:w-1/2 flex justify-between items-baseline">
         <p class="text-xs sm:text-md text-primary-dark">
           NT.
           <span
