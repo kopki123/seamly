@@ -10,7 +10,7 @@ const getUserInfo = async (req: Request, res: Response) => {
 
   checkPermissions({ userId: user.id, role: user.role }, userId);
 
-  res.status(StatusCodes.CREATED).json(apiResponse({ data: { user }}));
+  res.status(StatusCodes.OK).json(apiResponse({ data: { user }}));
 };
 
 export {

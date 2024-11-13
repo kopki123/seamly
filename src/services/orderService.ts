@@ -112,7 +112,7 @@ const createOrder = async (input: OrderInput) => {
     payMethod,
     pickMethod,
     deliveryFee,
-    } = input;
+  } = input;
 
   const cart = await prisma.cart.findUnique({
     where: { userId },
