@@ -24,13 +24,15 @@ dotenv.config();
 const app = express();
 
 // Client
-app.use(history());
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
-app.use(express.static(path.join(__dirname, '../public')));
+if(process.env.NODE_ENV === 'production') {
+  app.use(history());
+  const __dirname = fileURLToPath(new URL('.', import.meta.url));
+  app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '../public'));
-});
+  app.get('/', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../public'));
+  });
+}
 
 // Middlewares
 app.use(helmet.contentSecurityPolicy({
