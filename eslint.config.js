@@ -10,9 +10,9 @@ export default [
   {
     rules: {
       semi: 'error',
+      quotes: ['error', 'single'],
       'prefer-const': 'error',
       'no-unused-vars': 'error',
-      'quotes': ['error', 'single'],
       'linebreak-style': ['error', 'unix'],
     },
     ignores: ['./client/*']

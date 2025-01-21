@@ -6,7 +6,11 @@ interface ApiResponseParams<T = any>{
   errors?: Record<string, string> | null;
 }
 
-export default function apiResponse ({ message = '成功', status = 'success', data = null }: ApiResponseParams = {}) {
+export default function apiResponse({
+  message = '成功',
+  status = 'success',
+  data = null
+}: ApiResponseParams = {}) {
   return {
     status,
     message,
