@@ -6,7 +6,7 @@ const whitelist = [
   'https://seamly-h5sc.onrender.com',
 ];
 
-const corsOptionsDelegate = (
+export const corsOptionsDelegate = (
   req: Request,
   callback: ((err: Error | null, options?: CorsOptions) => void)
 ) =>{
@@ -20,5 +20,3 @@ const corsOptionsDelegate = (
 
   callback(null, corsOptions);
 };
-
-export default corsOptionsDelegate;
