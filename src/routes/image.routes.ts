@@ -4,7 +4,7 @@ import { authenticateUser, authorizePermissions } from '../middleware/authentica
 import {
   deleteImage,
   uploadImage
-} from '../controllers/imageController.js';
+} from '../controllers/image.controller.js';
 import { Role } from '../utils/role.js';
 
 const router = express.Router();

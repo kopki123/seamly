@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import * as userService from '../services/userService.js';
+import * as userService from '../services/user.service.js';
 import checkPermissions from '../utils/checkPermissions.js';
 import apiResponse from '../utils/apiResponse.js';
 

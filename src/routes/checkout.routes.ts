@@ -3,7 +3,7 @@ import { authenticateUser } from '../middleware/authentication.js';
 import {
   checkout,
   checkoutReturn,
-} from '../controllers/checkoutController.js';
+} from '../controllers/checkout.controller.js';
 
 const router = express.Router();
 

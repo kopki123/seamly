@@ -6,7 +6,7 @@ import {
   login,
   logout,
   checkLoginStatus
-} from '../controllers/authController.js';
+} from '../controllers/auth.controller.js';
 
 const router = express.Router();
 

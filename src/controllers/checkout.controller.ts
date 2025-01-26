@@ -3,7 +3,7 @@ import ECPayPayment from 'ecpay_aio_nodejs';
 import StatusCodes from 'http-status-codes';
 import apiResponse from '../utils/apiResponse.js';
 import createDateToLocaleString from '../utils/createDateToLocaleString.js';
-import * as orderService from '../services/orderService.js';
+import * as orderService from '../services/order.service.js';
 import checkPermissions from '../utils/checkPermissions.js';
 
 const checkout = async (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import { UnauthorizedError } from '../errors/index.js';
-import * as cartService from '../services/cartService.js';
+import * as cartService from '../services/cart.service.js';
 import apiResponse from '../utils/apiResponse.js';
 
 const getCart = async (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { UnauthenticatedError, UnauthorizedError } from '../errors/index.js';
 import { checkTokenValid, attachCookiesToResponse, generateAccessToken, checkRefreshTokenValid } from '../utils/authJwt.js';
-import { findRefreshToken } from '../services/refreshTokenService.js';
+import { findRefreshToken } from '../services/refreshToken.service.js';
 import { Role } from '../utils/role.js';
 
 interface JwtPayload {

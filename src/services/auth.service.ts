@@ -3,8 +3,8 @@ import { BadRequestError, NotFoundError } from '../errors/index.js';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import Joi from 'joi';
-import { RegisterInput } from '../models/RegisterInputModel';
-import { RegisteredUser } from '../models/RegisteredUser';
+import { RegisterInput } from '../models/RegisterInputModel.js';
+import { RegisteredUser } from '../models/RegisteredUser.js';
 
 const userSchema = Joi.object({
   email: Joi.string().trim().email().required(),

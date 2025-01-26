@@ -6,7 +6,7 @@ import {
   createProduct,
   deleteProduct,
   updateProduct
-} from '../controllers/productController.js';
+} from '../controllers/product.controller.js';
 import { Role } from '../utils/role.js';
 
 const router = express.Router();

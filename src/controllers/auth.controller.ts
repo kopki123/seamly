@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import { BadRequestError, UnauthenticatedError } from '../errors/index.js';
-import * as authService from '../services/authService.js';
-import { createRefreshToken, deleteRefreshToken } from '../services/refreshTokenService.js';
+import * as authService from '../services/auth.service.js';
+import { createRefreshToken, deleteRefreshToken } from '../services/refreshToken.service.js';
 import sendVerificationEmail from '../utils/sendVerificationEmail.js';
 import comparePassword from '../utils/comparePassword.js';
 import { attachCookiesToResponse, generateAccessToken } from '../utils/authJwt.js';

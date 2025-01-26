@@ -11,14 +11,14 @@ import errorHandlerMiddleware from './middleware/errorHandler.js';
 import notFoundMiddleware from './middleware/notFound.js';
 import { corsOptionsDelegate } from './utils/cors.js';
 
-import authRouter from './routes/authRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-import productRouter from './routes/productRoutes.js';
-import categoryRoute from './routes/categoryRoute.js';
-import cartRoutes from './routes/cartRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
-import imageRoutes from './routes/imageRoutes.js';
-import checkoutRoute from './routes/checkoutRoute.js';
+import authRouter from './routes/auth.routes.js';
+import userRoutes from './routes/user.routes.js';
+import productRouter from './routes/product.routes.js';
+import categoryRoute from './routes/category.routes.js';
+import cartRoutes from './routes/cart.routes.js';
+import orderRoutes from './routes/order.routes.js';
+import imageRoutes from './routes/image.routes.js';
+import checkoutRoute from './routes/checkout.routes.js';
 
 dotenv.config();
 const app = express();

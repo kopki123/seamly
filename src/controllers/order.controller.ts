@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
-import * as orderService from '../services/orderService.js';
+import * as orderService from '../services/order.service.js';
 import apiResponse from '../utils/apiResponse.js';
 import checkPermissions from '../utils/checkPermissions.js';
 
