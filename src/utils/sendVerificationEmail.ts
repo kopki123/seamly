@@ -1,6 +1,14 @@
 import sendEmail from './sendEmail.js';
 
-const sendVerificationEmail = async ({ email, verificationToken, origin }) => {
+const sendVerificationEmail = async ({
+  email,
+  verificationToken,
+  origin
+}: {
+  email: string;
+  verificationToken: string;
+  origin: string;
+}) => {
   const verifyEmail = `${origin}/auth/verify-email?token=${verificationToken}&email=${email}`;
 
   return sendEmail({

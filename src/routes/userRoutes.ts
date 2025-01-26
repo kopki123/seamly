@@ -6,6 +6,8 @@ import {
 
 const router = express.Router();
 
-router.get('/info', authenticateUser, getUserInfo);
+router
+  .route('/info')
+  .get(authenticateUser, getUserInfo);
 
 export default router;

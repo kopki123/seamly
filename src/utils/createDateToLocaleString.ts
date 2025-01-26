@@ -1,4 +1,4 @@
-export default function createDateToLocaleString() {
+const createDateToLocaleString = () => {
   return new Date().toLocaleString('zh-TW', {
     year: 'numeric',
     month: '2-digit',
@@ -9,4 +9,6 @@ export default function createDateToLocaleString() {
     hour12: false,
     timeZone: 'UTC',
   });
-}
+};
+
+export default createDateToLocaleString;

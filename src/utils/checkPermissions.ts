@@ -1,10 +1,9 @@
 import { UnauthorizedError } from '../errors/index.js';
 
-const checkPermissions = (requestUser: {
-    userId: string,
-    role: number
-  },
-  resourceUserId: string) => {
+const checkPermissions = (
+  requestUser: { userId: string, role: number },
+  resourceUserId: string
+) => {
   if (requestUser.role === 1) {
     return;
   };

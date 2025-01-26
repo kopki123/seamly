@@ -6,14 +6,16 @@ interface ApiResponseParams<T = any>{
   errors?: Record<string, string> | null;
 }
 
-export default function apiResponse({
+const apiResponse = ({
   message = '成功',
   status = 'success',
   data = null
-}: ApiResponseParams = {}) {
+}: ApiResponseParams = {}) => {
   return {
     status,
     message,
     data,
   };
-}
+};
+
+export default apiResponse;

@@ -71,7 +71,7 @@ const updateUser = async (userPayload: any, email: string) => {
   return user;
 };
 
-const findUserIdByEmail= async (email: string) => {
+const findUserIdByEmail = async (email: string) => {
   const user = await prisma.user.findUnique({
     where: {
       email,
