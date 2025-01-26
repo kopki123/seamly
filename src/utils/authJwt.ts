@@ -4,11 +4,11 @@ import jwt from 'jsonwebtoken';
 export const oneDay = 1000 * 60 * 60 * 24;
 export const longerExp = 1000 * 60 * 60 * 24 * 30;
 
-const isTokenValid = (token: string) => {
+const checkTokenValid = (token: string) => {
   return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 };
 
-const isRefreshTokenValid = (token: string) => {
+const checkRefreshTokenValid = (token: string) => {
   return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
 };
 
@@ -44,7 +44,7 @@ const attachCookiesToResponse = ({ res, accessToken, refreshToken }: {
 export {
   generateAccessToken,
   generateRefreshToken,
-  isTokenValid,
-  isRefreshTokenValid,
+  checkTokenValid,
+  checkRefreshTokenValid,
   attachCookiesToResponse,
 };

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { UnauthenticatedError, UnauthorizedError } from '../errors/index.js';
-import { isTokenValid, attachCookiesToResponse, generateAccessToken, isRefreshTokenValid } from '../utils/authJwt.js';
+import { checkTokenValid, attachCookiesToResponse, generateAccessToken, checkRefreshTokenValid } from '../utils/authJwt.js';
 import { findRefreshToken } from '../services/refreshTokenService.js';
 import { Role } from '../utils/role.js';
 
@@ -16,12 +16,12 @@ const authenticateUser = async (req: Request, res: Response, next: NextFunction)
 
   try {
     if(accessToken) {
-      const payload = isTokenValid(accessToken) as JwtPayload;
+      const payload = checkTokenValid(accessToken) as JwtPayload;
       req.user = payload.user;
       return next();
     }
 
-    const payload = isRefreshTokenValid(refreshToken) as JwtPayload;
+    const payload = checkRefreshTokenValid(refreshToken) as JwtPayload;
     const existingToken = await findRefreshToken({ token: refreshToken, userId: payload.user.userId });
 
     if(!existingToken || existingToken?.expiresAt.getTime() < Date.now()) {
