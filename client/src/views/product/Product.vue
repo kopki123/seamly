@@ -4,10 +4,11 @@ import { useRoute, useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/user';
 import { useProductsStore } from '@/stores/products';
 import { useCartStore } from '@/stores/cart';
-import useGlobalLoading from '@/components/base/loading';
 import type { Product } from '@/api/products/getAllProducts';
 import NumberInput from '@/components/base/numberInput/NumberInput.vue';
 import TextButton from '@/components/base/button/TextButton.vue';
+import ImageLoader from '@/components/base/ImageLoader.vue';
+import useGlobalLoading from '@/components/base/loading';
 import useMessage from '@/components/base/message';
 
 const route = useRoute();
@@ -15,6 +16,7 @@ const router = useRouter();
 const userStore = useUserStore();
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
+
 const isLoading = ref(false);
 const product = ref<Product>();
 const quantity = ref(1);
@@ -75,7 +77,7 @@ onMounted(async () => {
         md:grid-cols-2 md:gap-x-16
       "
     >
-      <img
+      <ImageLoader
         :src="product!.image"
         alt=""
         class="
@@ -84,7 +86,7 @@ onMounted(async () => {
           rounded
           overflow-hidden
         "
-      >
+      />
       <div class="flex flex-col gap-4">
         <p
           v-text="product!.title"

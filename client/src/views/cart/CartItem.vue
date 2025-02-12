@@ -5,6 +5,7 @@ import { useCartStore } from '@/stores/cart';
 import { TrashIcon } from '@heroicons/vue/24/outline';
 import NumberInput from '@/components/base/numberInput/NumberInput.vue';
 import IconButton from '@/components/base/button/IconButton.vue';
+import ImageLoader from '@/components/base/ImageLoader.vue';
 import type { CartItem } from '@/api/cart/getCart';
 import useGlobalLoading from '@/components/base/loading';
 import useDebounce from '@/utils/useDebounce';
@@ -68,7 +69,7 @@ watch(quantity, useDebounce(async (value: number) => {
       class="flex gap-3 hover:cursor-pointer"
       @click="router.push({ name: 'product', params: { id: cartItem.product.id } })"
     >
-      <img
+      <ImageLoader 
         :src="cartItem.product.image"
         alt=""
         class="
@@ -78,7 +79,8 @@ watch(quantity, useDebounce(async (value: number) => {
           rounded
           overflow-hidden
         "
-      >
+      />
+
       <div class="flex flex-col gap-2">
         <p
           v-text="cartItem.product.title"

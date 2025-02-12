@@ -7,6 +7,7 @@ import type { Order } from '@/api/orders/getAllOrders';
 import convertDateToDateString from '@/utils/convertDateToDateString';
 import maskPhoneNumber from '@/utils/maskPhoneNumber';
 import { pickMethodOptions } from '@/utils/checkoutConfig';
+import ImageLoader from '@/components/base/ImageLoader.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -101,7 +102,7 @@ onMounted(async () => {
         class="sm:w-1/2 flex gap-3 hover:cursor-pointer"
         @click="router.push(`/product/${item.product.id}`)"
       >
-        <img
+        <ImageLoader 
           :src="item.product.image"
           alt=""
           class="
@@ -110,7 +111,7 @@ onMounted(async () => {
             rounded
             overflow-hidden
           "
-        >
+        />
         <div class="flex flex-col gap-2">
           <p
             v-text="item.product.title"

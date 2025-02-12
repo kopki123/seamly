@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CartItem } from '@/api/cart/getCart';
+import ImageLoader from '@/components/base/ImageLoader.vue';
 
 defineProps<{
   cartItem: CartItem;
@@ -19,7 +20,7 @@ defineProps<{
     "
   >
     <div class="sm:w-1/2 flex gap-3">
-      <img
+      <ImageLoader 
         :src="cartItem.product.image"
         alt=""
         class="
@@ -28,7 +29,7 @@ defineProps<{
           rounded
           overflow-hidden
         "
-      >
+      />
       <div class="flex flex-col gap-2">
         <p v-text="cartItem.product.title" class="text-lg" />
         <p v-text="cartItem.product.description" class="text-xs" />

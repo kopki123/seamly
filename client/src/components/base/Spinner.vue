@@ -4,7 +4,7 @@
       animate-spin
       inline-flex
       w-full h-full
-      border-2 border-white/40 border-b-transparent
+      border-2 border-black/40 border-b-transparent
       rounded-full
     "
   />

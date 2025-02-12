@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<{
   disabled: false,
   onChange: undefined,
 });
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void;
 }>();

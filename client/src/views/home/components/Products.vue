@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useProductsStore } from '@/stores/products';
 import useGlobalLoading from '@/components/base/loading';
+import ImageLoader from '@/components/base/ImageLoader.vue';
 
 const router = useRouter();
 const productsStore = useProductsStore();
@@ -39,18 +40,18 @@ onMounted(async () => {
       "
       @click="handleClick(product.id)"
     >
-      <img
+      <ImageLoader 
         :src="product.image"
-        alt=""
         class="
           w-full
           object-cover aspect-square
           rounded
           overflow-hidden
         "
-      >
+      />
       <div
         class="
+          
           mt-6
           px-1
           flex justify-between items-end

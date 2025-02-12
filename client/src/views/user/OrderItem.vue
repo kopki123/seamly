@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import convertDateToDateString from '@/utils/convertDateToDateString';
 import { ChevronRightIcon } from '@heroicons/vue/24/outline';
 import type { Order } from '@/api/orders/getAllOrders';
+import ImageLoader from '@/components/base/ImageLoader.vue';
 
 const props = defineProps<{
   order: Order;
@@ -11,10 +12,9 @@ const props = defineProps<{
 
 const router = useRouter();
 
-const totalQuantity = computed(() => props.order.orderItems.reduce((sum, item) => {
-  const newSum = sum + item.quantity;
-  return newSum;
-}, 0));
+const totalQuantity = computed(() => {
+  return props.order.orderItems.reduce((sum, { quantity }) => sum + quantity, 0);
+});
 
 </script>
 
@@ -42,7 +42,7 @@ const totalQuantity = computed(() => props.order.orderItems.reduce((sum, item) =
       "
     >
       <div class="flex items-center gap-2 overflow-hidden">
-        <img
+        <ImageLoader 
           v-for="item in order.orderItems.slice(0, 3)"
           :key="item.id"
           :src="item.product.image"
@@ -53,7 +53,7 @@ const totalQuantity = computed(() => props.order.orderItems.reduce((sum, item) =
             rounded
             overflow-hidden
           "
-        >
+        />
       </div>
       <div
         class="
