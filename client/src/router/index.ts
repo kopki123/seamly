@@ -68,7 +68,7 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'UserInfo',
+          name: 'userInfo',
           component: () => import('@/views/user/UserInfo.vue'),
         },
         {
@@ -91,7 +91,7 @@ const router = createRouter({
     },
     {
       path: '/:pathMatch(.*)*',
-      name: 'NotFound',
+      name: 'notFound',
       redirect: '/',
     },
   ],
