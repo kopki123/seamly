@@ -1,5 +1,7 @@
 #!/bin/bash
 
+node -v
+
 # 進入 client 目錄
 cd client
 
