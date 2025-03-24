@@ -3,6 +3,9 @@
 # 進入 client 目錄
 cd client
 
+# 安裝套件
+npm install
+
 # 執行構建
 npm run build
 
