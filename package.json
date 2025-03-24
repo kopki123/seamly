@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "prisma": "cd src/prisma && npx prisma generate",
-    "start": "node ./dist/index.js",
+    "start": "NODE_ENV=production node ./dist/index.js",
     "build": "./build.sh && npm run prisma && tsc",
     "dev": "nodemon ./src/index.ts"
   },
