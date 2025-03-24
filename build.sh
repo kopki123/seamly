@@ -7,7 +7,7 @@ cd client
 npm install
 npm i vue-tsc
 
-npm ls vue-tsc
+npm ls
 # 執行構建
 npm run build
 
