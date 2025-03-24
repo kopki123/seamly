@@ -7,7 +7,7 @@
   "scripts": {
     "prisma": "cd src/prisma && npx prisma generate",
     "start": "node ./dist/index.js",
-    "build": "npm run prisma && tsc",
+    "build": "npm run prisma && tsc && ./build.sh",
     "dev": "nodemon ./src/index.ts"
   },
   "keywords": [],

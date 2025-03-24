@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, watch } from 'vue';
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 import { useProductsStore } from '@/stores/products';
 import { useCategoriesStore } from '@/stores/categories';
+import useDebounce from '@/utils/useDebounce';
 import Input from '@/components/base/input/Input.vue';
 import Select from '@/components/base/select/Select.vue';
-import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
-import useDebounce from '@/utils/useDebounce';
 
 const sortOptions = [
   { label: '最新', value: 'newest' },

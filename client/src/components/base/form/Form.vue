@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Rule } from './types';
 import {
   ref,
   watch,
@@ -6,7 +7,6 @@ import {
   toRefs,
   reactive,
 } from 'vue';
-import type { Rule } from './types';
 
 const props = withDefaults(defineProps<{
   model: object;

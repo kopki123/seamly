@@ -1,5 +1,5 @@
-import prisma from '../prisma/prisma-client.js';
 import Joi from 'joi';
+import prisma from '../prisma/prisma-client.js';
 import { OrderInput } from '../models/OrderInputModel.js';
 import { BadRequestError } from '../errors/index.js';
 

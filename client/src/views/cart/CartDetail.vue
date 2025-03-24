@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import TextButton from '@/components/base/button/TextButton.vue';
 import { useCartStore } from '@/stores/cart';
+import TextButton from '@/components/base/button/TextButton.vue';
 import Divider from '@/components/base/divider/Divider.vue';
 
 const router = useRouter();

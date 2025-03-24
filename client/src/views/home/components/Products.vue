@@ -40,7 +40,7 @@ onMounted(async () => {
       "
       @click="handleClick(product.id)"
     >
-      <ImageLoader 
+      <ImageLoader
         :src="product.image"
         class="
           w-full
@@ -51,7 +51,6 @@ onMounted(async () => {
       />
       <div
         class="
-          
           mt-6
           px-1
           flex justify-between items-end

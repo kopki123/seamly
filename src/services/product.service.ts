@@ -1,6 +1,6 @@
+import Joi from 'joi';
 import prisma from '../prisma/prisma-client.js';
 import { BadRequestError, NotFoundError } from '../errors/index.js';
-import Joi from 'joi';
 import { Product } from '../models/ProductModel.js';
 
 const productSchema = Joi.object({

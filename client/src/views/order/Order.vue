@@ -2,11 +2,11 @@
 import { onMounted, computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useOrdersStore } from '@/stores/orders';
-import useGlobalLoading from '@/components/base/loading';
 import type { Order } from '@/api/orders/getAllOrders';
 import convertDateToDateString from '@/utils/convertDateToDateString';
 import maskPhoneNumber from '@/utils/maskPhoneNumber';
 import { pickMethodOptions } from '@/utils/checkoutConfig';
+import useGlobalLoading from '@/components/base/loading';
 import ImageLoader from '@/components/base/ImageLoader.vue';
 
 const route = useRoute();
@@ -102,7 +102,7 @@ onMounted(async () => {
         class="sm:w-1/2 flex gap-3 hover:cursor-pointer"
         @click="router.push(`/product/${item.product.id}`)"
       >
-        <ImageLoader 
+        <ImageLoader
           :src="item.product.image"
           alt=""
           class="

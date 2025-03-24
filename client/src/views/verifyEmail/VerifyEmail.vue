@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
-import { verifyEmail } from '@/api/auth';
 import { CheckCircleIcon } from '@heroicons/vue/24/outline';
+import { verifyEmail } from '@/api/auth';
 import useMessage from '@/components/base/message';
 
 const route = useRoute();

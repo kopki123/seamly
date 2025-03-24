@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import BaseButton from '@/components/base/button/BaseButton.vue';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline';
+import BaseButton from '@/components/base/button/BaseButton.vue';
 
 const props = withDefaults(defineProps<{
   modelValue: string | number;

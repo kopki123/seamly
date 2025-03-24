@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import history from 'connect-history-api-fallback';
+
 import errorHandlerMiddleware from './middleware/errorHandler.js';
 import notFoundMiddleware from './middleware/notFound.js';
 import { corsOptionsDelegate } from './utils/cors.js';
