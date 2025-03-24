@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Spinner from './Spinner.vue';
 import imgLoadingFail from '@/assets/images/img-loading-fail.webp';
+import Spinner from './Spinner.vue';
 
 withDefaults(defineProps<{
   src: string;
@@ -33,19 +33,19 @@ function handleImgError () {
 		<img
 			v-if="!isError"
 			v-show="!isLoading"
-			:src="src" 
+			:src="src"
 			:alt="alt"
 			@load="handleImgLoading"
 			@error="handleImgError"
 		>
-		<div 
+		<div
 			v-if="isLoading"
 			class="w-1/5 h-1/5"
 		>
 			<Spinner />
 		</div>
 
-		<img 
+		<img
 			v-if="isError"
 			:src="imgLoadingFail"
 			alt=""

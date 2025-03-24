@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Carousel from '@/views/home/components/Carousel.vue';
-import SearchBar from '@/views/home/components/SearchBar.vue';
-import Products from '@/views/home/components/Products.vue';
+import Carousel from './components/Carousel.vue';
+import SearchBar from './components/SearchBar.vue';
+import Products from './components/Products.vue';
 </script>
 
 <template>

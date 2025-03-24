@@ -1,6 +1,6 @@
+import Joi from 'joi';
 import prisma from '../prisma/prisma-client.js';
 import { BadRequestError } from '../errors/index.js';
-import Joi from 'joi';
 
 const categorySchema = Joi.object({
   name: Joi.string().trim().min(1).max(50).required(),

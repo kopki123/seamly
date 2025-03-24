@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import convertDateToDateString from '@/utils/convertDateToDateString';
 import { ChevronRightIcon } from '@heroicons/vue/24/outline';
 import type { Order } from '@/api/orders/getAllOrders';
+import convertDateToDateString from '@/utils/convertDateToDateString';
 import ImageLoader from '@/components/base/ImageLoader.vue';
 
 const props = defineProps<{
@@ -42,7 +42,7 @@ const totalQuantity = computed(() => {
       "
     >
       <div class="flex items-center gap-2 overflow-hidden">
-        <ImageLoader 
+        <ImageLoader
           v-for="item in order.orderItems.slice(0, 3)"
           :key="item.id"
           :src="item.product.image"

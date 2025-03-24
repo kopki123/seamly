@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
 import { passwordPattern, emailPattern } from '@/utils/rules';
 import Form from '@/components/base/form/Form.vue';
 import FormItem from '@/components/base/form/FormItem.vue';
 import type { Rule } from '@/components/base/form/types';
 import TextButton from '@/components/base/button/TextButton.vue';
 import Input from '@/components/base/input/Input.vue';
-import { useUserStore } from '@/stores/user';
 import useGlobalLoading from '@/components/base/loading';
 import useMessage from '@/components/base/message';
 
