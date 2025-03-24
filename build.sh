@@ -1,12 +1,11 @@
 #!/bin/bash
 
-node -v
-
 # 進入 client 目錄
 cd client
 
 # 安裝套件
 npm install
+npm ls vue-tsc
 
 # 執行構建
 npm run build
