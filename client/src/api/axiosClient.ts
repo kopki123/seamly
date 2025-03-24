@@ -28,7 +28,7 @@ export interface ApiResponse<T = any> {
 }
 
 const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? '/',
+  baseURL: '/api/v1',
   timeout: 10 * 1000, // 10s
   headers: {
     Accept: 'application/json',
