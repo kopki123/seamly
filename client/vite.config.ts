@@ -6,14 +6,14 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig(({ mode, command }) => {
   console.table({ mode, command });
 
-  const {
-    API_URL: baseURL,
-  } = loadEnv(mode, process.cwd(), '');
+  // const {
+  //   API_URL: baseURL,
+  // } = loadEnv(mode, process.cwd(), '');
 
-  process.env = {
-    ...process.env,
-    VITE_API_URL: baseURL,
-  };
+  // process.env = {
+  //   ...process.env,
+  //   VITE_API_URL: baseURL,
+  // };
 
   return {
     plugins: [
