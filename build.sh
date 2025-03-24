@@ -5,7 +5,7 @@ cd client
 
 # 安裝套件
 npm install
-npm install -D vue-tsc
+npm i vue-tsc
 
 npm ls vue-tsc
 # 執行構建
