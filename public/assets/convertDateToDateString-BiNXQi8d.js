@@ -1,1 +1,0 @@
-function S(t,r="/"){if((t==null?void 0:t.constructor)!==Date)return"-";const n=t.getFullYear().toString(),o=(t.getMonth()+1).toString().padStart(2,"0"),g=t.getDate().toString().padStart(2,"0"),s=t.getHours().toString().padStart(2,"0"),c=t.getMinutes().toString().padStart(2,"0");return`${n}${r}${o}${r}${g} ${s}:${c}`}export{S as c};
