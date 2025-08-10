@@ -5,12 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "prisma": "cd src/prisma && npx prisma generate",
+    "prisma": "prisma generate",
     "start": "NODE_ENV=production node ./dist/index.js",
     "build": "./build.sh && npm run prisma && tsc",
     "dev": "nodemon ./src/index.ts",
-    "db:seed": "prisma db seed",
-    "prisma:generate": "prisma generate"
+    "db:seed": "prisma db seed"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
