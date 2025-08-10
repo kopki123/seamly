@@ -1,5 +1,5 @@
 import { Cart } from '@prisma/client';
-import prisma from '../prisma/prisma-client.js';
+import prisma from '../prisma-client.js';
 
 const isCartItemOwnedByUser = async (userId: string, cartItemId: string) => {
   const cartItem = await prisma.cartItem.findUnique({

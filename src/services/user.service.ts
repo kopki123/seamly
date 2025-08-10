@@ -1,4 +1,4 @@
-import prisma from '../prisma/prisma-client.js';
+import prisma from '../prisma-client.js';
 import { NotFoundError } from '../errors/index.js';
 
 const findUserById = async (userId: string) => {

@@ -1,4 +1,4 @@
-import prisma from '../prisma/prisma-client.js';
+import prisma from '../prisma-client.js';
 import { generateRefreshToken, longerExp } from '../utils/authJwt.js';
 
 const createRefreshToken = async (user: { userId: string, role: number }) => {

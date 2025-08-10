@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import Joi from 'joi';
-import prisma from '../prisma/prisma-client.js';
+import prisma from '../prisma-client.js';
 import { BadRequestError, NotFoundError } from '../errors/index.js';
 import { RegisterInput } from '../models/RegisterInputModel.js';
 import { RegisteredUser } from '../models/RegisteredUser.js';
