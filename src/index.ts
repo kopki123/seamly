@@ -28,10 +28,10 @@ const app = express();
 if(process.env.NODE_ENV === 'production') {
   app.use(history());
   const __dirname = fileURLToPath(new URL('.', import.meta.url));
-  app.use(express.static(path.join(__dirname, '../public')));
+  app.use(express.static(path.join(__dirname, '../../public')));
 
   app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../public'));
+    res.sendFile(path.join(__dirname, '../../public'));
   });
 }
 
