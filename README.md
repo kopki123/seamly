@@ -20,31 +20,31 @@
 ## 🛠️ 技術棧
 
 ### 後端
-- **Node.js** - 服務器運行環境
-- **Express.js** - Web 框架
-- **TypeScript** - 類型安全的 JavaScript
-- **Prisma** - 數據庫 ORM
-- **PostgreSQL** - 主數據庫
-- **JWT** - 身份驗證
-- **bcryptjs** - 密碼加密
-- **Nodemailer** - 郵件發送
-- **Multer** - 文件上傳
-- **Helmet** - 安全中間件
+- **Node.js**
+- **Express.js**
+- **TypeScript**
+- **Prisma**
+- **PostgreSQL**
+- **JWT**
+- **bcryptjs**
+- **Nodemailer**
+- **Multer**
+- **Helmet**
 
 ### 前端
-- **Vue 3** - 漸進式 JavaScript 框架
-- **TypeScript** - 類型安全
-- **Vue Router** - 路由管理
-- **Pinia** - 狀態管理
-- **Tailwind CSS** - 樣式框架
-- **Vite** - 構建工具
-- **Axios** - HTTP 客戶端
-- **Swiper** - 輪播組件
+- **Vue 3**
+- **TypeScript**
+- **Vue Router**
+- **Pinia**
+- **Tailwind CSS**
+- **Vite**
+- **Axios**
+- **Swiper**
 
 ### 開發工具
-- **ESLint** - 代碼規範
-- **Nodemon** - 開發熱重載
-- **Prisma Studio** - 數據庫管理
+- **ESLint**
+- **Nodemon**
+- **Prisma Studio**
 
 ## 📁 項目結構
 
