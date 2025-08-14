@@ -5,13 +5,13 @@ const sendEmail = async ({ to, subject, html }) => {
     host: 'smtp.gmail.com',
     port: 465,
     auth: {
-      user: 'kopki684@gmail.com',
+      user: process.env.EMAIL,
       pass: process.env.EMAIL_PASSWORD,
     }
   });
 
   return await transporter.sendMail({
-    from: '"Seamly" <kopki684@gmail.com>',
+    from: `"Seamly" <${process.env.EMAIL}>`,
     to,
     subject,
     html,

@@ -89,7 +89,7 @@ seamly/
 
 1. **克隆項目**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/kopki123/seamly.git
    cd seamly
    ```
 
@@ -113,28 +113,34 @@ seamly/
    編輯 `.env` 文件，配置以下變量：
    ```env
    # 數據庫配置
+   DB_PASSWORD=password
    DATABASE_URL="postgresql://username:password@localhost:5432/seamly"
    DIRECT_URL="postgresql://username:password@localhost:5432/seamly"
 
    # JWT 配置
-   JWT_SECRET="your-jwt-secret"
-   JWT_LIFETIME="1d"
+   ACCESS_TOKEN_SECRET=your-jwt-secret
+   REFRESH_TOKEN_SECRET=your-jwt-secret
 
    # Cookie 配置
    COOKIE_SECRET="your-cookie-secret"
 
    # 郵件配置
-   EMAIL_USER="your-email@gmail.com"
-   EMAIL_PASS="your-email-password"
+   EMAIL=email@gmail.com
+   EMAIL_PASSWORD=password
+
+   # supabase配置
+   SUPABASE_URL=https://example.supabase.co
+   SUPABASE_KEY=your_supabase_key
 
    # 綠界支付配置
-   ECPAY_MERCHANT_ID="your-merchant-id"
-   ECPAY_HASH_KEY="your-hash-key"
-   ECPAY_HASH_IV="your-hash-iv"
+   ECPAY_URL=https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5
+   MERCHANTID="your-merchant-id"
+   HASHKEY="your-hash-key"
+   HASHIV="your-hash-iv"
+   HOST="https://website.com"
 
    # 服務器配置
    PORT=3000
-   NODE_ENV=development
    ```
 
 4. **數據庫設置**
@@ -182,33 +188,4 @@ npm run build
 npm start
 ```
 
-## 🛡️ 安全特性
 
-- JWT 身份驗證
-- 密碼加密存儲
-- CORS 配置
-- Helmet 安全頭
-- XSS 防護
-- 輸入驗證
-
-## 🧪 開發腳本
-
-```bash
-# 開發模式
-npm run dev              # 啟動後端開發服務器
-cd client && npm run dev # 啟動前端開發服務器
-
-# 構建
-npm run build            # 構建整個項目
-
-# 數據庫
-npm run prisma           # 生成 Prisma 客戶端
-npm run db:seed          # 填充測試數據
-
-# 代碼檢查
-cd client && npm run lint # 前端代碼檢查
-```
-
----
-
-**注意**: 請確保在生產環境中正確配置所有環境變量，特別是數據庫連接字符串和安全密鑰。
