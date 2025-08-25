@@ -7,7 +7,7 @@
   "scripts": {
     "prisma": "prisma generate",
     "start": "NODE_ENV=production node ./dist/src/index.js",
-    "build": "./build.sh && npm run prisma && tsc",
+    "build": "./build.sh && npx prisma generate && tsc",
     "dev": "nodemon ./src/index.ts",
     "db:seed": "prisma db seed"
   },
